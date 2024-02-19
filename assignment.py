@@ -1,7 +1,11 @@
 def new_student(db):
+    global roll_number 
     roll_number = input("Enter roll number: ")
+    global name 
     name = input("Enter name: ")
+    global age 
     age = int(input("Enter age: "))
+    global subject 
     subject = input("Enter subject: ")
     
     db[roll_number] = {
@@ -10,17 +14,12 @@ def new_student(db):
 
     
     
-def display_all_students(db):
-    for roll_number, student in db.items():
-        print(f"Roll number: {roll_number}")
-        print(f"Name: {student['name']}")
-        print(f"Age: {student['age']}")
-        print(f"Subject: {student['subject']}")
-        print()
-    main()
+def display_all_students():
+    print(db)
         
-def search_student(db):
+def search_student():
     roll_number = input("Enter roll number: ")
+    global student 
     student = db.get(roll_number)
     if student:
         print(f"Roll number: {roll_number}")
@@ -31,16 +30,16 @@ def search_student(db):
         print("Student not found")
     main()
         
-def delete_student(db):
+def delete_student():
     roll_number = input("Enter roll number: ")
-    student = db.pop(roll_number, None)
+    student = db.pop(roll_number)
     if student:
         print("Student deleted successfully")
     else:
         print("Student not found")
     main()
         
-def update_student(db):
+def update_student():
     roll_number = input("Enter roll number: ")
     student = db.get(roll_number)
     if student:
@@ -56,7 +55,7 @@ def update_student(db):
         
     main()
     
-def add_new_student(db):
+def add_new_student():
         num_students = int(input("Enter number of students: "))
         for i in range(num_students):
             new_student(db)
@@ -65,6 +64,7 @@ def add_new_student(db):
     
     
 def main():
+    global db 
     db = dict()
     print("1. Add new student")
     print("2. Display all students")
@@ -78,15 +78,15 @@ def main():
     
     
     if choice == 1:
-        add_new_student(db)
+        add_new_student()
     elif choice == 2:
-        display_all_students(db)
+        display_all_students()
     elif choice == 3:
-        search_student(db)
+        search_student()
     elif choice == 4:
-        delete_student(db)
+        delete_student()
     elif choice == 5:
-        update_student(db)
+        update_student()
     elif choice == 6:
         return
     else:
