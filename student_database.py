@@ -1,16 +1,19 @@
 import os
+
 students = []
+
 
 def add_student():
     num_students = int(input("Enter the number of students: "))
-    
+
     for i in range(num_students):
         student = {}
         student["name"] = input("Enter the name of the student: ")
         student["age"] = input("Enter the age of the student: ")
         student["gender"] = input("Enter the gender of the student: ")
         students.append(student)
-        
+
+
 def remove_student():
     name = input("Enter the name of the student to remove: ")
     for student in students:
@@ -20,7 +23,8 @@ def remove_student():
             break
     else:
         print("Student not found")
-        
+
+
 def view_student():
     name = input("Enter the name of the student to view: ")
     for student in students:
@@ -31,13 +35,15 @@ def view_student():
             break
     else:
         print("Student not found")
-        
+
+
 def display_all_students():
     for student in students:
         print(f"Name: {student['name']}")
         print(f"Age: {student['age']}")
         print(f"Gender: {student['gender']}")
-        
+
+
 def update_student():
     name = input("Enter the name of the student to update: ")
     for student in students:
@@ -45,8 +51,6 @@ def update_student():
             student["name"] = input("Enter the name of the student: ")
             student["age"] = input("Enter the age of the student: ")
             student["gender"] = input("Enter gender of student")
-    
-
 
 
 def start():
@@ -58,9 +62,9 @@ def start():
     print("5. Update Student")
     print("6. Restart Program")
     print("7. Exit Program")
-    
+
     choice = int(input("Enter your choice: "))
-    
+
     if choice == 1:
         add_student()
     elif choice == 2:
